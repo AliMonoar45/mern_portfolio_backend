@@ -16,14 +16,14 @@ const userSchema = new Schema({
   },
 });
 // hashing password before saving
-userSchema.pre("save", async function (next) {
+userSchema.pre("save", async function () {
   try {
-    if (!this.isModified("password")) return next();
+    if (!this.isModified("password")) return ;
     const hash = await bcrypt.hash(this.password, SALT_ROUNDS);
     this.password = hash;
-    return next();
+    return;
   } catch (err) {
-    return next(err);
+    return err;
   }
 });
 
