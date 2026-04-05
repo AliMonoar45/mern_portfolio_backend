@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 
 const userSchema = new Schema({
   email: {
@@ -9,4 +9,10 @@ const userSchema = new Schema({
     trim: true,
     match: [/^\S+@\S+\.\S+$/, "Please enter a valid email address"],
   },
+  password: {
+    type: String,
+    required: true,
+  },
 });
+
+const User = model("User", userSchema);
