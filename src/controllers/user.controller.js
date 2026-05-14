@@ -27,11 +27,11 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   try {
-    // TODO: Extract email and password from req.body
+    //  Extract email and password from req.body
 
     const { email, password } = req.body;
 
-    // TODO: Find user in database by email
+    //  Find user in database by email
 
     const user = await User.findOne({ email });
 
@@ -61,7 +61,7 @@ const login = async (req, res) => {
       //  Store token in cookies
       res.cookie("user-token", token);
       //  Send success response with token
-      // TODO: Return res to frontend
+      //  Return res to frontend
       res.status(200).json({
         success: true,
         message: "Successfully Logged In",
@@ -78,6 +78,7 @@ const login = async (req, res) => {
     res.status(500).json({
       success: false,
       message: `Something went wrong : ${error}`,
+      error: error.toString(),
     });
   }
 };

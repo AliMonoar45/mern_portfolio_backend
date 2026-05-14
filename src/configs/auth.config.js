@@ -3,13 +3,10 @@ import jwt from "jsonwebtoken";
 dotenv.config();
 // token encode
 const encodeToken = (email, id) => {
-  const payload = {
-    email,
-    id,
-  };
+  const payload = { email, id };
   const key = process.env.JWT_KEY;
-  const expire = process.env.JWT_EXPIRES_IN;
-  return jwt.sign(payload, key, { expireIn: expire });
+  const expire = process.env.JWT_EXPIRES_IN; 
+  return jwt.sign(payload, key, { expiresIn: expire });
 };
 // decode token
 const decodeToken = () => {};
