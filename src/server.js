@@ -4,6 +4,9 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import connectDB from "./configs/db.config.js";
 import userRoutes from "./routes/user.routes.js";
+import blogRoutes from "./routes/blog.route.js";
+
+
 
 dotenv.config();
 
@@ -22,12 +25,14 @@ const startServer = async () => {
       console.log(`Server is running on port: ${port}`);
     });
   } catch (error) {
-      console.error("Failed to connect to connect");
-      process.exit(1);
+    console.error("Failed to connect to connect");
+    process.exit(1);
   }
 };
 startServer();
-app.use("/api/v1", userRoutes);
+// user route
+app.use("/api/v1/auth", userRoutes);
+app.use("/api/v1/blogs", blogRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
