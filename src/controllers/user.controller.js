@@ -56,7 +56,7 @@ const login = async (req, res) => {
       //    If password matches -> continue
 
       //  Generate JWT token for user
-      const token = authConfig.encodeToken(user?.email, user?._id.toString());
+      const token = authConfig.encodeToken(user?.email, user?._id?.toString());
 
       //  Store token in cookies
       res.cookie("user-token", token);
