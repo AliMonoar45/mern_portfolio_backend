@@ -31,7 +31,10 @@ const startServer = async () => {
 };
 startServer();
 // user route
+// user related
 app.use("/api/v1/auth", userRoutes);
+
+// blog related
 app.use("/api/v1/blogs", blogRoutes);
 
 app.listen(port, () => {
