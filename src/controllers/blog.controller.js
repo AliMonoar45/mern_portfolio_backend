@@ -147,7 +147,44 @@ const updateBlog = async (req, res) => {
 };
 
 // delete blog
-const deleteBlog = async (req, res) => {};
+const deleteBlog = async (req, res) => {
+  try {
+    // get id from request params
+    const { id } = req.params;
+
+    // validate id format first
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid blog ID format",
+      });
+    }
+
+    // find blog by id and delete
+    const blog = await Blog.findByIdAndDelete(id);
+
+    // if not found
+    if (!blog) {
+      return res.status(404).json({
+        success: false,
+        message: "Blog not found",
+      });
+    }
+
+    // success response
+    res.status(200).json({
+      success: true,
+      message: "Blog deleted successfully",
+      data: blog, // optional: return deleted blog details
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.toString(),
+      message: `Something went wrong : ${error}`,
+    });
+  }
+};
 
 // for export
 const blogControllers = {
