@@ -68,7 +68,7 @@ const singleBlog = async (req, res) => {
     }
     // find single blog
     const blog = await Blog.findOne({ _id: new ObjectId() });
-    
+
     // if not found
     if (!blog) {
       return res.status(404).json({
@@ -93,7 +93,58 @@ const singleBlog = async (req, res) => {
 };
 
 // update blog
-const updateBlog = async (req, res) => {};
+const updateBlog = async (req, res) => {
+  try {
+    // fetching single blog for update
+    // getting id from req of params
+
+    const { id } = req.params;
+    // get new information to update
+    const { title, img, category, description, short_description } = req.body;
+    // validate id format first
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid blog ID format",
+      });
+    }
+    // find single blog and update
+    const blog = await Blog.findByIdAndUpdate(
+      id,
+      {
+        title,
+        img,
+        category,
+        description,
+        short_description,
+      },
+      {
+        new: true,
+      },
+    );
+
+    // if not found
+    if (!blog) {
+      return res.status(404).json({
+        success: false,
+        message: "Blog not found",
+      });
+    }
+
+    // res to frontend if all go right
+    res.status(200).json({
+      success: true,
+      message: "Blog updated successfully",
+      data: blog,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.toString(),
+      message: `Something went wrong : ${error}`,
+    });
+  }
+};
 
 // delete blog
 const deleteBlog = async (req, res) => {};
