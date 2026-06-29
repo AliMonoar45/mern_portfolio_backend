@@ -60,14 +60,16 @@ const singleBlog = async (req, res) => {
     const { id } = req.params;
 
     // validate id format first
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+
+    // i use mongoose id
+    /* if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({
         success: false,
         message: "Invalid blog ID format",
       });
-    }
+    } */
     // find single blog
-    const blog = await Blog.findOne({ _id: new ObjectId() });
+    const blog = await Blog.findById( id );
 
     // if not found
     if (!blog) {
@@ -102,12 +104,12 @@ const updateBlog = async (req, res) => {
     // get new information to update
     const { title, img, category, description, short_description } = req.body;
     // validate id format first
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    /* if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({
         success: false,
         message: "Invalid blog ID format",
       });
-    }
+    } */
     // find single blog and update
     const blog = await Blog.findByIdAndUpdate(
       id,
@@ -153,18 +155,19 @@ const deleteBlog = async (req, res) => {
     const { id } = req.params;
 
     // validate id format first
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    
+    /* if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({
         success: false,
         message: "Invalid blog ID format",
       });
-    }
+    } */
 
     // find blog by id and delete
-    const blog = await Blog.findByIdAndDelete(id);
+    const deleted_blog = await Blog.findByIdAndDelete(id);
 
     // if not found
-    if (!blog) {
+    if (!deleted_blog) {
       return res.status(404).json({
         success: false,
         message: "Blog not found",
@@ -175,7 +178,7 @@ const deleteBlog = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Blog deleted successfully",
-      data: blog, // optional: return deleted blog details
+      data: deleted_blog,
     });
   } catch (error) {
     res.status(500).json({
