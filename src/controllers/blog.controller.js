@@ -59,17 +59,8 @@ const singleBlog = async (req, res) => {
 
     const { id } = req.params;
 
-    // validate id format first
-
-    // i use mongoose id
-    /* if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({
-        success: false,
-        message: "Invalid blog ID format",
-      });
-    } */
     // find single blog
-    const blog = await Blog.findById( id );
+    const blog = await Blog.findById(id);
 
     // if not found
     if (!blog) {
@@ -103,13 +94,7 @@ const updateBlog = async (req, res) => {
     const { id } = req.params;
     // get new information to update
     const { title, img, category, description, short_description } = req.body;
-    // validate id format first
-    /* if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({
-        success: false,
-        message: "Invalid blog ID format",
-      });
-    } */
+
     // find single blog and update
     const blog = await Blog.findByIdAndUpdate(
       id,
@@ -153,15 +138,6 @@ const deleteBlog = async (req, res) => {
   try {
     // get id from request params
     const { id } = req.params;
-
-    // validate id format first
-    
-    /* if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({
-        success: false,
-        message: "Invalid blog ID format",
-      });
-    } */
 
     // find blog by id and delete
     const deleted_blog = await Blog.findByIdAndDelete(id);
