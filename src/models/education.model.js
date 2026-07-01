@@ -25,6 +25,7 @@ const educationSchema = new Schema(
   },
   {
     timestamps: true,
+    versionKey: false,
   },
 );
 

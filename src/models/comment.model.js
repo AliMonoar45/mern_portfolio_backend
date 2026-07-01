@@ -24,11 +24,12 @@ const commentSchema = new Schema(
       trim: true,
       maxlength: 1000,
     },
-  }
-
+  },
+  {
+    timestamps: true,
+    versionKey: false,
+  },
 );
-
-
 
 const Comment = model("Comment", commentSchema);
 
