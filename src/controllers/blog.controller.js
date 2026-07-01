@@ -4,16 +4,27 @@ import Blog from "../models/blog.model.js";
 const createBlog = async (req, res) => {
   try {
     // get blog data from req body
-    const blogData = req.body;
-    // create a blog
-    const result = await Blog.create(blogData);
+    const { title, category, description, short_description } = JSON.parse(
+      req.body.data,
+    );
 
+    const img = req.file.path;
+
+    // create a blog
+
+    const blog = await Blog.create({
+      title,
+      img,
+      category,
+      description,
+      short_description,
+    });
     // send success response
     res.status(201).json({
       success: true,
       message: "Blog created successfully",
       // give blog data to frontend
-      data: result,
+      data: blog,
     });
   } catch (error) {
     res.status(500).json({
