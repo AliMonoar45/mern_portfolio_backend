@@ -11,3 +11,61 @@ const createAdvantage = async (req, res) => {
     });
   }
 };
+
+
+// get all advantages
+
+const allAdvantage = async (req, res) => {
+  try {
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.toString(),
+      message: "Something went wrong.",
+    });
+  }
+};
+// get single advantage
+const singleAdvantage = async (req, res) => {
+  try {
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.toString(),
+      message: "Something went wrong.",
+    });
+  }
+};
+// single advantage update
+
+const updateAdvantage = async (req, res) => {
+  try {
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.toString(),
+      message: "Something went wrong.",
+    });
+  }
+};
+
+// delete single advantage
+const deleteAdvantage = async (req, res) => {
+  try {
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.toString(),
+      message: "Something went wrong.",
+    });
+  }
+};
+
+const advantageControllers = {
+    createAdvantage,
+    allAdvantage,
+    singleAdvantage,
+    updateAdvantage,
+    deleteAdvantage
+}
+export default advantageControllers;
