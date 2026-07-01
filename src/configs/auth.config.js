@@ -9,7 +9,15 @@ const encodeToken = (email, id) => {
   return jwt.sign(payload, key, { expiresIn: expire });
 };
 // decode token
-const decodeToken = () => {};
+const decodeToken = (token) => {
+  try {
+    const key = process.env.JWT_KEY;
+    const decoded = jwt.verify(token, key);
+    return decoded;
+  } catch (error) {
+    return null;
+  }
+};
 
 const authConfig = { encodeToken, decodeToken };
 
