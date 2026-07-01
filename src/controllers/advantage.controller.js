@@ -1,11 +1,11 @@
-import { Advantage } from "../models/advantage.model.js";
+import  Advantage  from "../models/Advantage.model.js";
 
-// creating advantage
+// creating Advantage
 const createAdvantage = async (req, res) => {
   try {
     // get all data from req
     const { title, category, percent, time } = req.body;
-    // create single advantage
+    // create single Advantage
     let data = await Advantage.create({
       title,
       category,
@@ -27,11 +27,12 @@ const createAdvantage = async (req, res) => {
   }
 };
 
-// get all advantages
+// get all Advantages
 
 const allAdvantage = async (req, res) => {
   try {
-    let data = Advantage.find();
+      let data = await Advantage.find();
+    //   console.log("i am here")
     res.status(200).json({
       success: true,
       message: "Advantage fetched successfully",
@@ -45,7 +46,7 @@ const allAdvantage = async (req, res) => {
     });
   }
 };
-// get single advantage
+// get single Advantage
 const singleAdvantage = async (req, res) => {
   try {
     const { id } = req.params;
@@ -64,7 +65,7 @@ const singleAdvantage = async (req, res) => {
     });
   }
 };
-// single advantage update
+// single Advantage update
 
 const updateAdvantage = async (req, res) => {
   try {
@@ -90,17 +91,17 @@ const updateAdvantage = async (req, res) => {
   }
 };
 
-// delete single advantage
+// delete single Advantage
 const deleteAdvantage = async (req, res) => {
-    try {
-      const { id } = req.params;
+  try {
+    const { id } = req.params;
 
-      let data = await Advantage.findByIdAndDelete(id);
-      res.status(200).json({
-        success: true,
-        message: "Advantage deleted successfully",
-        data,
-      });
+    let data = await Advantage.findByIdAndDelete(id);
+    res.status(200).json({
+      success: true,
+      message: "Advantage deleted successfully",
+      data,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,

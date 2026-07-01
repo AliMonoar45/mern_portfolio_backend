@@ -1,6 +1,6 @@
 import express from "express";
 
-import { advantageControllers } from "../controllers/advantage.controller.js";
+import  advantageControllers  from "../controllers/advantage.controller.js";
 import { validateUser } from "../middleware/validation.middleware.js";
 
 const router = express.Router();

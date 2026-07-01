@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser";
 import connectDB from "./configs/db.config.js";
 import userRoutes from "./routes/user.routes.js";
 import blogRoutes from "./routes/blog.route.js";
-
+import advantageRoutes from "./routes/advantage.routes.js";
 dotenv.config();
 
 const port = process.env.PORT;
