@@ -2,7 +2,23 @@ import { Advantage } from "../models/advantage.model.js";
 
 // creating advantage
 const createAdvantage = async (req, res) => {
-  try {
+    try {
+        // get all data from req 
+        const { title, category, percent, time } = req.body;
+         // create single advantage
+        let data = await Advantage.create({
+          title,
+          category,
+          percent,
+          time,
+        });
+        // send response 
+        res.status(201).json({
+          success: true,
+          message: "Advantage created successfully",
+          data,
+        });
+
   } catch (error) {
     res.status(500).json({
       success: false,
