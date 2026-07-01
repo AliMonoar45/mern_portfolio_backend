@@ -36,6 +36,12 @@ app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/blogs", blogRoutes);
 // advantage route
 app.use("/api/v1/advantages", advantageRoutes);
+
+// check server is running
+app.get("/", (req, res) => {
+  res.send("Portfolio Backend Server is Running...");
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
