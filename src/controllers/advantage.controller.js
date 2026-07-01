@@ -2,23 +2,22 @@ import { Advantage } from "../models/advantage.model.js";
 
 // creating advantage
 const createAdvantage = async (req, res) => {
-    try {
-        // get all data from req 
-        const { title, category, percent, time } = req.body;
-         // create single advantage
-        let data = await Advantage.create({
-          title,
-          category,
-          percent,
-          time,
-        });
-        // send response 
-        res.status(201).json({
-          success: true,
-          message: "Advantage created successfully",
-          data,
-        });
-
+  try {
+    // get all data from req
+    const { title, category, percent, time } = req.body;
+    // create single advantage
+    let data = await Advantage.create({
+      title,
+      category,
+      percent,
+      time,
+    });
+    // send response
+    res.status(201).json({
+      success: true,
+      message: "Advantage created successfully",
+      data,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -28,11 +27,16 @@ const createAdvantage = async (req, res) => {
   }
 };
 
-
 // get all advantages
 
 const allAdvantage = async (req, res) => {
   try {
+    let data = Advantage.find();
+    res.status(200).json({
+      success: true,
+      message: "Advantage fetched successfully",
+      data,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -44,6 +48,14 @@ const allAdvantage = async (req, res) => {
 // get single advantage
 const singleAdvantage = async (req, res) => {
   try {
+    const { id } = req.params;
+
+    let data = await Advantage.findById(id);
+    res.status(200).json({
+      success: true,
+      message: "Advantage fetched successfully",
+      data,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -56,6 +68,19 @@ const singleAdvantage = async (req, res) => {
 
 const updateAdvantage = async (req, res) => {
   try {
+    const { id } = req.params;
+    const { title, category, percent, time } = req.body;
+
+    let data = await Advantage.findByIdAndUpdate(
+      id,
+      { title, category, percent, time },
+      { new: true },
+    );
+    res.status(200).json({
+      success: true,
+      message: "Advantage updated successfully",
+      data,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -67,7 +92,15 @@ const updateAdvantage = async (req, res) => {
 
 // delete single advantage
 const deleteAdvantage = async (req, res) => {
-  try {
+    try {
+      const { id } = req.params;
+
+      let data = await Advantage.findByIdAndDelete(id);
+      res.status(200).json({
+        success: true,
+        message: "Advantage deleted successfully",
+        data,
+      });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -78,10 +111,10 @@ const deleteAdvantage = async (req, res) => {
 };
 
 const advantageControllers = {
-    createAdvantage,
-    allAdvantage,
-    singleAdvantage,
-    updateAdvantage,
-    deleteAdvantage
-}
+  createAdvantage,
+  allAdvantage,
+  singleAdvantage,
+  updateAdvantage,
+  deleteAdvantage,
+};
 export default advantageControllers;
