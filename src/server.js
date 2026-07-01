@@ -6,8 +6,6 @@ import connectDB from "./configs/db.config.js";
 import userRoutes from "./routes/user.routes.js";
 import blogRoutes from "./routes/blog.route.js";
 
-
-
 dotenv.config();
 
 const port = process.env.PORT;
@@ -36,7 +34,8 @@ app.use("/api/v1/auth", userRoutes);
 
 // blog related
 app.use("/api/v1/blogs", blogRoutes);
-
+// advantage route
+app.use("/api/v1/advantages", advantageRoutes);
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
