@@ -97,14 +97,14 @@ const updateComment = async (req, res) => {
 };
 // delete single comment
 const deleteComment = async (req, res) => {
-    try {
-        const { id } = req.params;
-        let data = Comment.findByIdAndDelete(id);
-        res.status(200).json({
-          success: true,
-          message: "Comment deleted successfully",
-          data,
-        });
+  try {
+    const { id } = req.params;
+    let data = Comment.findByIdAndDelete(id);
+    res.status(200).json({
+      success: true,
+      message: "Comment deleted successfully",
+      data,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
