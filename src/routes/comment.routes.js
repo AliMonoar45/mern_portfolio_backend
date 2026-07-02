@@ -29,4 +29,4 @@ router.delete(
   commentControllers.deleteComment,
 );
 
-export default router; 
+export default router;
