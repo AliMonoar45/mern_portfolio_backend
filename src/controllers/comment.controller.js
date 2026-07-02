@@ -1,18 +1,14 @@
+import mongoose from "mongoose";
 import Comment from "../models/comment.model.js";
 
-// creating comment
 const createComment = async (req, res) => {
   try {
-    // get comment info
-    let { name, blogID, email, comment } = req.body;
-    // creating blog id
-    blogID = new ObjectId(blogID);
-    let data = await Comment.create({
-      blogID,
-      name,
-      email,
-      comment,
-    });
+    let { blogID, name, email, comment } = req.body;
+
+    blogID = new mongoose.Types.ObjectId(blogID);
+
+    const data = await Comment.create({ blogID, name, email, comment });
+
     res.status(201).json({
       success: true,
       message: "Comment created successfully",

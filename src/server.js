@@ -6,10 +6,11 @@ import connectDB from "./configs/db.config.js";
 import userRoutes from "./routes/user.routes.js";
 import blogRoutes from "./routes/blog.route.js";
 import advantageRoutes from "./routes/advantage.routes.js";
+import commentRoutes from "./routes/comment.routes.js";
 dotenv.config();
 
 const port = process.env.PORT;
-const app = express();
+export const app = express();
 
 app.use(cors());
 app.use(express.json());
@@ -37,7 +38,7 @@ app.use("/api/v1/blogs", blogRoutes);
 // advantage route
 app.use("/api/v1/advantages", advantageRoutes);
 // comment route
-app.use("/api/v1/comments",)
+app.use("/api/v1/comment", commentRoutes);
 // check server is running
 app.get("/", (req, res) => {
   res.send("Portfolio Backend Server is Running...");

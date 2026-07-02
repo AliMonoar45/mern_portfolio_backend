@@ -2,6 +2,7 @@ import express from "express";
 
 import commentControllers from "../controllers/comment.controller.js";
 import { validateUser } from "../middleware/validation.middleware.js";
+import { app } from "../server.js";
 
 const router = express.Router();
 
@@ -28,4 +29,4 @@ router.delete(
   commentControllers.deleteComment,
 );
 
-export default router;
+export default router; 
