@@ -36,7 +36,8 @@ app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/blogs", blogRoutes);
 // advantage route
 app.use("/api/v1/advantages", advantageRoutes);
-
+// comment route
+app.use("/api/v1/comments",)
 // check server is running
 app.get("/", (req, res) => {
   res.send("Portfolio Backend Server is Running...");

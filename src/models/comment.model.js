@@ -1,29 +1,13 @@
-import { model, Schema } from "mongoose";
+import mongoose from "mongoose";
 
-const commentSchema = new Schema(
+const commentSchema = new mongoose.Schema(
   {
     blogID: {
-      type: Schema.Types.ObjectId,
-      ref: "Blog",
-      required: [true, "blogID is required"],
+      type: mongoose.Schema.Types.ObjectId,
     },
-    name: {
-      type: String,
-      trim: true,
-      maxlength: 100,
-    },
-    email: {
-      type: String,
-      required: [true, "Email is required"],
-      lowercase: true,
-      trim: true,
-      match: [/^\S+@\S+\.\S+$/, "Please enter a valid email address"],
-    },
-    comment: {
-      type: String,
-      trim: true,
-      maxlength: 1000,
-    },
+    name: { type: String },
+    email: { type: String },
+    comment: { type: String },
   },
   {
     timestamps: true,
@@ -31,6 +15,6 @@ const commentSchema = new Schema(
   },
 );
 
-const Comment = model("Comment", commentSchema);
+const Comment = mongoose.model("Comment", commentSchema);
 
 export default Comment;
