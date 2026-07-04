@@ -11,5 +11,6 @@ router.post(
 );
 // get all education
 router.get("/all-education", validateUser, educationController.allEducation);
+router.get("/single-education/:id", validateUser, educationController.singleEducation);
 
 export default router;

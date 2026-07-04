@@ -47,8 +47,18 @@ const allEducation = async (req, res) => {
 };
 // get single education
 const singleEducation = async (req, res) => {
-  try {
-  } catch (error) {
+    try {
+      // get id form req.params
+      const { id } = req.params;
+      // find data from db
+      let data = await Education.findById(id);
+      //response back
+      res.status(200).json({
+        success: true,
+        message: "Education fetched successfully",
+        data,
+      });
+    } catch (error) {
     res.status(500).json({
       success: false,
       error: error.toString(),
