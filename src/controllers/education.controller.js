@@ -29,6 +29,14 @@ const createEducation = async (req, res) => {
 // get all education
 const allEducation = async (req, res) => {
   try {
+    // fetching all education
+    const data = await Education.find();
+    //response back
+    res.status(200).json({
+      success: true,
+      message: "Education fetched successfully",
+      data,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,

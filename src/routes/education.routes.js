@@ -9,5 +9,7 @@ router.post(
   validateUser,
   educationController.createEducation,
 );
+// get all education
+router.get("/all-education", validateUser, educationController.allEducation);
 
 export default router;
