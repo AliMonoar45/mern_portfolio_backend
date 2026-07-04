@@ -4,24 +4,10 @@ const educationSchema = new Schema(
   {
     title: {
       type: String,
-      required: true,
-      trim: true,
-      maxlength: 200,
     },
-    institute: {
-      type: String,
-      trim: true,
-      maxlength: 200,
-    },
-    description: {
-      type: String,
-      trim: true,
-      maxlength: 1000,
-    },
-    time: {
-      type: Date,
-      required: true,
-    },
+    institute: { type: String },
+    description: { type: String },
+    time: { type: String },
   },
   {
     timestamps: true,
