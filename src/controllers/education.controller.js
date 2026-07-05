@@ -47,18 +47,18 @@ const allEducation = async (req, res) => {
 };
 // get single education
 const singleEducation = async (req, res) => {
-    try {
-      // get id form req.params
-      const { id } = req.params;
-      // find data from db
-      let data = await Education.findById(id);
-      //response back
-      res.status(200).json({
-        success: true,
-        message: "Education fetched successfully",
-        data,
-      });
-    } catch (error) {
+  try {
+    // get id form req.params
+    const { id } = req.params;
+    // find data from db
+    let data = await Education.findById(id);
+    //response back
+    res.status(200).json({
+      success: true,
+      message: "Education fetched successfully",
+      data,
+    });
+  } catch (error) {
     res.status(500).json({
       success: false,
       error: error.toString(),
@@ -69,6 +69,22 @@ const singleEducation = async (req, res) => {
 // update single education
 const updateEducation = async (req, res) => {
   try {
+    // grt id
+    const { id } = req.params;
+    // new data
+    const { title, institute, description, time } = req.body;
+    // update by id
+    let data = await Education.findByIdAndUpdate(
+      id,
+      { title, institute, description, time },
+      { new: true },
+    );
+    // send response
+    res.status(200).json({
+      success: true,
+      message: "Education updated successfully",
+      data,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
