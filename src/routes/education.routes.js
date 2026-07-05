@@ -21,5 +21,10 @@ router.put(
   validateUser,
   educationController.updateEducation,
 );
+router.delete(
+  "/delete-education/:id",
+  validateUser,
+  educationController.updateEducation,
+);
 
 export default router;

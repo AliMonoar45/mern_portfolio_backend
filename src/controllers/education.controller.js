@@ -69,7 +69,7 @@ const singleEducation = async (req, res) => {
 // update single education
 const updateEducation = async (req, res) => {
   try {
-    // grt id
+    // get id
     const { id } = req.params;
     // new data
     const { title, institute, description, time } = req.body;
@@ -96,6 +96,17 @@ const updateEducation = async (req, res) => {
 // delete single education
 const deleteEducation = async (req, res) => {
   try {
+    // get id
+    const { id } = req.params;
+
+    // update by id
+    let data = await Education.findByIdAndDelete(id);
+    // send response
+    res.status(200).json({
+      success: true,
+      message: "Education deleted successfully",
+      data,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
