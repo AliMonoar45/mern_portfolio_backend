@@ -8,6 +8,7 @@ import blogRoutes from "./routes/blog.route.js";
 import advantageRoutes from "./routes/advantage.routes.js";
 import commentRoutes from "./routes/comment.routes.js";
 import educationRoutes from "./routes/education.routes.js";
+import experienceRoutes from "./routes/experience.routes.js";
 dotenv.config();
 
 const port = process.env.PORT;
@@ -41,7 +42,9 @@ app.use("/api/v1/advantages", advantageRoutes);
 // comment route
 app.use("/api/v1/comment", commentRoutes);
 // education routes
-app.use("/api/v1/education",educationRoutes)
+app.use("/api/v1/education", educationRoutes);
+// experience route
+app.use("api/v1/experience", experienceRoutes);
 // check server is running
 app.get("/", (req, res) => {
   res.send("Portfolio Backend Server is Running...");
