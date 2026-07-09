@@ -44,7 +44,7 @@ app.use("/api/v1/comment", commentRoutes);
 // education routes
 app.use("/api/v1/education", educationRoutes);
 // experience route
-app.use("api/v1/experience", experienceRoutes);
+app.use("/api/v1/experience", experienceRoutes);
 // check server is running
 app.get("/", (req, res) => {
   res.send("Portfolio Backend Server is Running...");
