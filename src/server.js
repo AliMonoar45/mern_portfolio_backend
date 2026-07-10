@@ -9,6 +9,7 @@ import advantageRoutes from "./routes/advantage.routes.js";
 import commentRoutes from "./routes/comment.routes.js";
 import educationRoutes from "./routes/education.routes.js";
 import experienceRoutes from "./routes/experience.routes.js";
+import fileRoutes from "./routes/file.routes.js";
 dotenv.config();
 
 const port = process.env.PORT;
@@ -45,6 +46,8 @@ app.use("/api/v1/comment", commentRoutes);
 app.use("/api/v1/education", educationRoutes);
 // experience route
 app.use("/api/v1/experience", experienceRoutes);
+// file route
+app.use("/api/v1/files", fileRoutes);
 
 
 

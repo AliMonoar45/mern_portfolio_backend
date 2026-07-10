@@ -5,10 +5,10 @@ import File from '../models/file.model.js'
 const fileUpload = async (req,res) => {
     try {
         // get file path
-        const fileName = req.file.path;
-        console.log('file name:- ', fileName);
+        const filename = req.file.path;
+        console.log('file name:- ', filename);
         // create file path
-        const data = await File.create({ fileName });
+        const data = await File.create({ filename });
         // send response
         res.status(201).json({
           success: true,
