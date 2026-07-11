@@ -10,7 +10,8 @@ import commentRoutes from "./routes/comment.routes.js";
 import educationRoutes from "./routes/education.routes.js";
 import experienceRoutes from "./routes/experience.routes.js";
 import fileRoutes from "./routes/file.routes.js";
-import inboxRoutes from './routes/inbox.routes.js'
+import inboxRoutes from "./routes/inbox.routes.js";
+import portfolioRoutes from "./routes/portfolio.routes.js";
 dotenv.config();
 
 const port = process.env.PORT;
@@ -42,17 +43,17 @@ app.use("/api/v1/blogs", blogRoutes);
 // advantage route
 app.use("/api/v1/advantages", advantageRoutes);
 // comment route
-app.use("/api/v1/comment", commentRoutes);
+app.use("/api/v1/comments", commentRoutes);
 // education routes
-app.use("/api/v1/education", educationRoutes);
+app.use("/api/v1/educations", educationRoutes);
 // experience route
-app.use("/api/v1/experience", experienceRoutes);
+app.use("/api/v1/experiences", experienceRoutes);
 // file route
 app.use("/api/v1/files", fileRoutes);
 // inbox route
-app.use("/api/v1/inbox", inboxRoutes);
-
-
+app.use("/api/v1/inboxes", inboxRoutes);
+// portfolio route
+app.use("/api/v1/portfolios", portfolioRoutes);
 
 // check server is running
 app.get("/", (req, res) => {
