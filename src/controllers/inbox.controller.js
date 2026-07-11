@@ -1,17 +1,18 @@
-import inbox from "../models/inbox.model";
+import Inbox from "../models/inbox.model.js";
 
-// create inbox
+// Create inbox
 const createInbox = async (req, res) => {
   try {
-    const { title, category, percent, time } = req.body;
+    const { name, email, website, message } = req.body;
 
     let data = await Inbox.create({
-      title,
-      category,
-      percent,
-      time,
+      name,
+      email,
+      website,
+      message,
     });
-    res.status(200).json({
+
+    res.status(201).json({
       success: true,
       message: "Inbox created successfully",
       data,
@@ -24,7 +25,8 @@ const createInbox = async (req, res) => {
     });
   }
 };
-// get all inbox
+
+// Get all inbox entries
 const allInbox = async (req, res) => {
   try {
     let data = await Inbox.find();
@@ -41,12 +43,13 @@ const allInbox = async (req, res) => {
     });
   }
 };
-// get single inbox
+
+// Get single inbox entry
 const singleInbox = async (req, res) => {
   try {
     const { id } = req.params;
-
     let data = await Inbox.findById(id);
+
     res.status(200).json({
       success: true,
       message: "Inbox fetched successfully",
@@ -60,17 +63,19 @@ const singleInbox = async (req, res) => {
     });
   }
 };
-// update single inbox
+
+// Update single inbox entry
 const updateInbox = async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, category, percent, time } = req.body;
+    const { name, email, website, message } = req.body;
 
     let data = await Inbox.findByIdAndUpdate(
       id,
-      { title, category, percent, time },
+      { name, email, website, message },
       { new: true },
     );
+
     res.status(200).json({
       success: true,
       message: "Inbox updated successfully",
@@ -84,12 +89,13 @@ const updateInbox = async (req, res) => {
     });
   }
 };
-// delete single inbox
+
+// Delete single inbox entry
 const deleteInbox = async (req, res) => {
   try {
     const { id } = req.params;
-
     let data = await Inbox.findByIdAndDelete(id);
+
     res.status(200).json({
       success: true,
       message: "Inbox deleted successfully",
@@ -104,11 +110,12 @@ const deleteInbox = async (req, res) => {
   }
 };
 
-const advantageControllers = {
+const inboxControllers = {
   createInbox,
   allInbox,
   singleInbox,
   updateInbox,
   deleteInbox,
 };
-export default advantageControllers;
+
+export default inboxControllers;

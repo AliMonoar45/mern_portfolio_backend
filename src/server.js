@@ -10,6 +10,7 @@ import commentRoutes from "./routes/comment.routes.js";
 import educationRoutes from "./routes/education.routes.js";
 import experienceRoutes from "./routes/experience.routes.js";
 import fileRoutes from "./routes/file.routes.js";
+import inboxRoutes from './routes/inbox.routes.js'
 dotenv.config();
 
 const port = process.env.PORT;
@@ -48,6 +49,8 @@ app.use("/api/v1/education", educationRoutes);
 app.use("/api/v1/experience", experienceRoutes);
 // file route
 app.use("/api/v1/files", fileRoutes);
+// inbox route
+app.use("/api/v1/inbox", inboxRoutes);
 
 
 
