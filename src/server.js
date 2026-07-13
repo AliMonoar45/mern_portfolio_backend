@@ -12,6 +12,8 @@ import experienceRoutes from "./routes/experience.routes.js";
 import fileRoutes from "./routes/file.routes.js";
 import inboxRoutes from "./routes/inbox.routes.js";
 import portfolioRoutes from "./routes/portfolio.routes.js";
+import serviceRoutes from "./routes/service.routes.js";
+
 dotenv.config();
 
 const port = process.env.PORT;
@@ -54,6 +56,8 @@ app.use("/api/v1/files", fileRoutes);
 app.use("/api/v1/inboxes", inboxRoutes);
 // portfolio route
 app.use("/api/v1/portfolios", portfolioRoutes);
+// service route
+app.use("/api/v1/services", serviceRoutes);
 
 // check server is running
 app.get("/", (req, res) => {
