@@ -92,6 +92,7 @@ const updatePortfolio = async (req, res) => {
 //! Portfolio delete single
 const deletePortfolio = async (req, res) => {
   try {
+    
     const { id } = req.params;
 
     let data = await Portfolio.findByIdAndDelete(id);
