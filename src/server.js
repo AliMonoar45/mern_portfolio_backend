@@ -13,6 +13,7 @@ import fileRoutes from "./routes/file.routes.js";
 import inboxRoutes from "./routes/inbox.routes.js";
 import portfolioRoutes from "./routes/portfolio.routes.js";
 import serviceRoutes from "./routes/service.routes.js";
+import testimonialRoutes from "./routes/testimonial.routes.js";
 
 dotenv.config();
 
@@ -58,7 +59,8 @@ app.use("/api/v1/inboxes", inboxRoutes);
 app.use("/api/v1/portfolios", portfolioRoutes);
 // service route
 app.use("/api/v1/services", serviceRoutes);
-
+// testimonial route
+app.use("/api/v1/testimonials", testimonialRoutes);
 // check server is running
 app.get("/", (req, res) => {
   res.send("Portfolio Backend Server is Running...");
