@@ -2,7 +2,8 @@ import Testimonial from "../models/testimonial.model.js";
 
 //! Testimonial create
 const createTestimonial = async (req, res) => {
-  try {
+    try {
+      // dummy img link letter use from data 
     const { clientName, address, img, feedback } = req.body;
 
     let data = await Testimonial.create({
@@ -65,21 +66,23 @@ const singleTestimonial = async (req, res) => {
 
 //! Testimonial update single
 const updateTestimonial = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { clientName, address, img, feedback } = req.body;
+    try {
+      // dummy img link letter use from data
 
-    let data = await Testimonial.findByIdAndUpdate(
-      id,
-      { clientName, address, img, feedback },
-      { new: true },
-    );
-    res.status(200).json({
-      success: true,
-      message: "Testimonial updated successfully",
-      data,
-    });
-  } catch (error) {
+      const { id } = req.params;
+      const { clientName, address, img, feedback } = req.body;
+
+      let data = await Testimonial.findByIdAndUpdate(
+        id,
+        { clientName, address, img, feedback },
+        { new: true },
+      );
+      res.status(200).json({
+        success: true,
+        message: "Testimonial updated successfully",
+        data,
+      });
+    } catch (error) {
     res.status(500).json({
       success: false,
       error: error.toString(),
